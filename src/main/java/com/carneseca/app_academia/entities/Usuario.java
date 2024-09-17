@@ -1,13 +1,12 @@
 package com.carneseca.app_academia.entities;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -25,6 +24,10 @@ public class Usuario {
     private float peso;
     private float altura;
 
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private List<Exercicio> exercicios = new ArrayList<>();
 
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private List<Treino> treinos = new ArrayList<>();
 
 }

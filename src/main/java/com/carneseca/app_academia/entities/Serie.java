@@ -1,9 +1,6 @@
 package com.carneseca.app_academia.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.UUID;
@@ -18,5 +15,9 @@ public class Serie {
     private Integer repeticoes;
     private Integer carga;
     private float descansoSerie;
+
+    @ManyToOne
+    @JoinColumn(name = "id_treino")
+    private Treino treino;
 
 }
