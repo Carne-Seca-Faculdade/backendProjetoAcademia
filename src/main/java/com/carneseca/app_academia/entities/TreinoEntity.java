@@ -1,16 +1,23 @@
 package com.carneseca.app_academia.entities;
 
-import jakarta.persistence.*;
-import lombok.Data;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import lombok.Data;
+
 @Data
 @Entity
-public class Treino {
+public class TreinoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,16 +27,13 @@ public class Treino {
     private float duracao;
     private Date criadoEm;
 
-    //Muitos treinos podem estar associados a um único usuário
     @ManyToOne
     @JoinColumn(name = "id_usuario")
-    private Usuario usuario;
+    private UsuarioEntity usuario;
 
-    //Um treino pode ter muitas séries
     @OneToMany(mappedBy = "treino", cascade = CascadeType.ALL)
-    private List<Serie> series = new ArrayList<>();
+    private List<SerieEntity> series = new ArrayList<>();
 
-    //Um treino pode ter muitos dias de treino
     @OneToMany(mappedBy = "treino", cascade = CascadeType.ALL)
-    private List<DiaTreino> diasTreino = new ArrayList<>();
+    private List<DiaTreinoEntity> diasTreino = new ArrayList<>();
 }

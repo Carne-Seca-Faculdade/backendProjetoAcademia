@@ -1,13 +1,18 @@
 package com.carneseca.app_academia.entities;
 
-import jakarta.persistence.*;
-import lombok.Data;
-
 import java.util.UUID;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import lombok.Data;
 
 @Data
 @Entity
-public class Serie {
+public class SerieEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +23,6 @@ public class Serie {
 
     @ManyToOne
     @JoinColumn(name = "id_treino")
-    private Treino treino;
+    private TreinoEntity treino;
 
 }

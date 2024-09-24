@@ -1,17 +1,22 @@
 package com.carneseca.app_academia.entities;
 
 
-import jakarta.persistence.*;
-import lombok.Data;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import lombok.Data;
+
 @Data
 @Entity
-public class Usuario {
+public class UsuarioEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,9 +30,9 @@ public class Usuario {
     private float altura;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private List<Exercicio> exercicios = new ArrayList<>();
+    private List<ExercicioEntity> exercicios = new ArrayList<>();
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private List<Treino> treinos = new ArrayList<>();
+    private List<TreinoEntity> treinos = new ArrayList<>();
 
 }
