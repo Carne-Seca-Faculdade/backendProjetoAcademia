@@ -9,6 +9,7 @@ import java.util.UUID;
 
 @Data
 @Entity
+@Table(name= "tb_dataTreino")
 public class DiaTreino {
 
     @Id

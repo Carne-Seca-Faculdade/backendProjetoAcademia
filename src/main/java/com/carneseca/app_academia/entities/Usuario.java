@@ -11,11 +11,13 @@ import java.util.UUID;
 
 @Data
 @Entity
+@Table(name = "tb_Usuario")
 public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;
+
     private String nome;
     private String email;
     private String senha;

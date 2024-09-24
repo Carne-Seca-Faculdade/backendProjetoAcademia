@@ -7,6 +7,7 @@ import java.util.UUID;
 
 @Data
 @Entity
+@Table(name= "tb_Serie")
 public class Serie {
 
     @Id
